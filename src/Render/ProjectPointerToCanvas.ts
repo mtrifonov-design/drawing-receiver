@@ -44,6 +44,14 @@ function projectPointerToCanvas(props : ProjectionProps) {
     })
 
 
+    if (props.currentTool === 'eraser') {
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.strokeStyle = 'rgba(0,0,0,1)';
+    } else {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.strokeStyle = props.currentColor;
+    }
+
     // Draw the pointer
     ctx.strokeStyle = props.currentColor;
     ctx.lineWidth = props.brushSize;

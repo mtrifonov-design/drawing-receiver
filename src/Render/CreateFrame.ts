@@ -1,5 +1,6 @@
 import { generateId } from "../Utils/Utils";
 import Dimensions from "../Constants/Dimensions";
+import type { Frame } from "../Types/Types";
 
 function createFrame() {
     const canvasId = generateId();
@@ -17,4 +18,12 @@ function createFrame() {
     }
 }
 
-export { createFrame };
+const copyFrame = (frame : Frame) => {
+    const newFrame = createFrame();
+    const canvas = window.RECEIVER_RESOURCES[frame.canvasId].canvas;
+    const ctx = window.RECEIVER_RESOURCES[newFrame.canvasId].context;
+    ctx.drawImage(canvas, 0, 0);
+    return newFrame;
+}
+
+export { createFrame, copyFrame };

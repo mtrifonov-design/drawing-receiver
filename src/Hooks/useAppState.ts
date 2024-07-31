@@ -71,6 +71,7 @@ const useAppState = create(
             state.layerOrder.push(id);
         }))
     },
+
     removeLayer: (layerID : string) => {
         set(produce((state : any) => {
             delete state.layers[layerID];

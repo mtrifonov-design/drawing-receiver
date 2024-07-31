@@ -3,7 +3,7 @@ import useAppState from "../Hooks/useAppState";
 import { saveResources, clearResources } from "../Resources/Resources";
 
 function Tools() {
-    const getStateForExport = useAppState((state : any) => state.getStateForExport);
+    const getStateForExport = useAppState((state: any) => state.getStateForExport);
     const saveToStorage = () => {
         const state = getStateForExport();
         saveResources(state);
@@ -11,12 +11,15 @@ function Tools() {
     const clear = () => {
         clearResources();
     }
-    const currentColor = useAppState((state : any) => state.currentColor);
-    const boxesVisible = useAppState((state : any) => state.boxesVisible);
-    const brushSize = useAppState((state : any) => state.brushSize);
-    const setCurrentColor = useAppState((state : any) => state.setCurrentColor);
-    const setBrushSize = useAppState((state : any) => state.setBrushSize);
-    const setBoxesVisible = useAppState((state : any) => state.setBoxesVisible);
+    const currentColor = useAppState((state: any) => state.currentColor);
+    const boxesVisible = useAppState((state: any) => state.boxesVisible);
+    const brushSize = useAppState((state: any) => state.brushSize);
+    const setCurrentColor = useAppState((state: any) => state.setCurrentColor);
+    const setBrushSize = useAppState((state: any) => state.setBrushSize);
+    const setBoxesVisible = useAppState((state: any) => state.setBoxesVisible);
+
+    const currentTool = useAppState((state: any) => state.currentTool);
+    const setCurrentTool = useAppState((state: any) => state.setCurrentTool);
 
 
 
@@ -61,26 +64,37 @@ function Tools() {
             display: "flex",
             flexDirection: "column",
         }}>
-        <input type="color" 
-            value={currentColor}
-            onChange={handleColorChange} />
-        <input 
-            type="range" 
-            min="1"
-            max="100"
-            step="1"
-            value={brushSize}
-            onChange={handleBrushSizeChange}
-        />
-        <button onClick={saveToStorage}>Save</button>
-        <button onClick={clear}>Clear</button>
-        <div>        
-            <label>Show Boxes</label>
-            <input type="checkbox"
-                checked={boxesVisible}
-                onChange={handleBoxChange}
-            ></input>
-        </div>
+            <div>
+                <div>
+                    <label>Brush</label>
+                    <input type="checkbox" checked={currentTool === "brush"} onChange={(e) => {setCurrentTool(e.target.checked === true ? "brush" : "eraser")}} />
+                </div>
+                <div>
+                    <label>Eraser</label>
+                    <input type="checkbox" checked={currentTool === "eraser"} onChange={(e) => {setCurrentTool(e.target.checked === true ? "eraser" : "brush")}} />
+                </div>
+            </div>
+
+            <input type="color"
+                value={currentColor}
+                onChange={handleColorChange} />
+            <input
+                type="range"
+                min="1"
+                max="100"
+                step="1"
+                value={brushSize}
+                onChange={handleBrushSizeChange}
+            />
+            <button onClick={saveToStorage}>Save</button>
+            <button onClick={clear}>Clear</button>
+            <div>
+                <label>Show Boxes</label>
+                <input type="checkbox"
+                    checked={boxesVisible}
+                    onChange={handleBoxChange}
+                ></input>
+            </div>
 
         </div>
 
