@@ -132,7 +132,7 @@ const createSignal = ({signalId,folderId}:{signalId:string, folderId:string}) =>
             curves: {
                 kf1: {
                     error: "",
-                    functionString: "-> 0;",
+                    functionString: "-> step();",
                 }
             },
             range: [0, 1],

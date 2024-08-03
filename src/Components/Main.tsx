@@ -67,16 +67,18 @@ function Main() {
     return <div>Loading...</div>;
   }
   return <div style={{
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    // display: "flex",
+    // justifyContent: "center",
+    // alignItems: "center",
     height: "100vh",
     width: "100vw",
     position: "relative",
     backgroundColor: "gray",
+    pointerEvents: uiMode === "edit" ? "all" : "none"
   }}>
+        <DrawingCanvas />
     {uiMode === "preview" ? null : <Island />}
-    <DrawingCanvas />
+
   </div>;
 }
 

@@ -34,6 +34,7 @@ function DrawingCanvas() {
                     width,
                     height,
                     onionSkin,
+                    uiMode,
                     layers,
                     layerOrder,
                     boxesVisible
@@ -47,7 +48,7 @@ function DrawingCanvas() {
                 cancelAnimationFrame(animationFrame);
             }
         };
-    },[ref.current, width, height, onionSkin, layers, layerOrder,boxesVisible]);
+    },[ref.current, width, height, onionSkin, layers, layerOrder,boxesVisible,uiMode]);
 
     useEffect(() => {
       if (!ref.current) return;
@@ -97,7 +98,14 @@ function DrawingCanvas() {
 
   return <div style={{
     height: "100%",
-    //pointerEvents: uiMode === "edit" ? "all" : "none"
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
+    
   }}>
     <canvas style={{
       height: "100%",

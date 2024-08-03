@@ -23,6 +23,7 @@ function render(props: RenderProps) {
     if (!visible) {
       continue;
     }
+
     renderLayer(ctx, layerId, onionSkin, props);
   }
 

@@ -24,6 +24,7 @@ interface RenderProps {
     layers: any;
     layerOrder: string[];
     boxesVisible: boolean;
+    uiMode: string;
 }
 
 interface ProjectionProps {

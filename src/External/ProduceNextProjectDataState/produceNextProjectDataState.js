@@ -5,11 +5,13 @@
 import orgOperations from './orgOperations.ts';
         
 import pinAndCurveOperations from './pinAndCurveOperations';
+import configOperations from './configOperations';
 
 
 const INSTRUCTIONS = {
     ...orgOperations,
-    ...pinAndCurveOperations
+    ...pinAndCurveOperations,
+    ...configOperations,
 }
 
 const produceNextProjectDataState = (previousState,instruction) => {

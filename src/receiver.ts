@@ -5,6 +5,10 @@ import type { ProjectState } from "./External/Types/Project";
 import produceNextProjectDataState from "./External/ProduceNextProjectDataState/produceNextProjectDataState";
 import interpolateSignalValue from "./External/InterpolateSignalValue/interpolateSignalValue";
 
+const structuredClone = (obj : any) => {
+    return JSON.parse(JSON.stringify(obj));
+}
+
 class Receiver {
     projectWorm: undefined | StateTimeWorm;
     projectState: undefined | ProjectState;

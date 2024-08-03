@@ -1,3 +1,4 @@
+import Dimensions from "Constants/Dimensions";
 
 
 function applyLayerTransformation(ctx: CanvasRenderingContext2D,
@@ -19,7 +20,7 @@ function applyLayerTransformation(ctx: CanvasRenderingContext2D,
         anchorY: number,
     }
 ) {
-    ctx.translate(anchorX, anchorY);
+    ctx.translate(anchorX , anchorY );
     ctx.scale(scaleX, scaleY);
     ctx.rotate(rotate);
     ctx.translate(-anchorX, -anchorY);
